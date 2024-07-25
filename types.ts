@@ -6,4 +6,5 @@ export interface contact {
   next_connection: string;
   notes: string;
   category?: string;
+  about: string;
 };

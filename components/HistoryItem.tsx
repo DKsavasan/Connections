@@ -6,7 +6,7 @@ interface ContactItemProps {
   contact: contact;
 }
 
-const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
+const HistoryItem: React.FC<ContactItemProps> = ({ contact }) => {
   const initials = contact.name
     .trim()
     .split(" ")
@@ -18,8 +18,20 @@ const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
     }, "")
     .toUpperCase();
 
+  console.log(initials);
+
   return (
     <View style={styles.container}>
+      <View style={styles.infoContainer}>
+        <Text style={styles.toptext}>
+          Connected with <Text style={styles.name}>{contact.name}</Text> at{" "}
+          <Text style={styles.checkInInfo}>{contact.last_connected}</Text>
+        </Text>
+        <Text style={styles.bottomtext}>
+          <Text style={styles.about}>About:</Text>
+          {contact.about}
+        </Text>
+      </View>
       {contact.image ? (
         <Image source={{ uri: contact.image }} style={styles.image} />
       ) : (
@@ -27,18 +39,6 @@ const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
           <Text style={styles.initials}>{initials}</Text>
         </View>
       )}
-      <View style={styles.infoContainer}>
-        <Text style={styles.name}>{contact.name}</Text>
-        <Text style={styles.checkInInfo}>
-          Last check-in: <Text style={styles.checkInDate}>{contact.last_connected}</Text>
-        </Text>
-        <Text style={styles.checkInInfo}>
-          Next check-in: <Text style={styles.checkInDate}>{contact.next_connection}</Text>
-        </Text>
-      </View>
-      <TouchableOpacity style={styles.checkInButton}>
-        <Text style={styles.checkInButtonText}>Connect</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -58,7 +58,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#3a3a3c",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 20,
+    marginRight: 10,
+    marginLeft: 20,
+  },
+  toptext: {
+    color: "white",
+    fontSize: 18,
+    paddingBottom: 5,
   },
   initials: {
     color: "white",
@@ -68,31 +74,24 @@ const styles = StyleSheet.create({
   infoContainer: {
     flex: 1,
   },
-  name: {
+  bottomtext: {
+    color: "white",
+    fontSize: 18,
+  },
+  about: {
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 4,
+  },
+  name: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    fontStyle: "italic",
   },
   checkInInfo: {
-    color: "#8e8e93",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  checkInDate: {
-    color: "#8e8e93",
-    fontSize: 14,
-    fontStyle: 'italic',
-  },
-  checkInButton: {
-    backgroundColor: "#007AFF",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-  },
-  checkInButtonText: {
     color: "white",
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: "bold",
   },
   image: {
@@ -103,4 +102,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ContactItem;
+export default HistoryItem;
