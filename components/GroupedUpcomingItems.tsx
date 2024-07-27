@@ -59,6 +59,7 @@ const GroupedUpcomingItems: React.FC<GroupedUpcomingItemsProps> = ({
   return (
     <SectionList
       sections={groupedData}
+      showsVerticalScrollIndicator={false}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => <UpcomingItem contact={item} />}
       renderSectionHeader={({ section: { title } }) => (

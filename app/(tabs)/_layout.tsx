@@ -6,6 +6,7 @@ import {
   FontAwesome5,
   Feather,
 } from "@expo/vector-icons";
+import { View, Text } from "react-native";
 
 const TabsLayout = () => {
   return (
@@ -47,7 +48,20 @@ const TabsLayout = () => {
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="adduser" size={(size = 30)} color={color} />
           ),
-          title: "Add",
+          headerRight: () => (
+            <View
+              style={{
+                borderRadius: 5,
+                backgroundColor: "#007AFF",
+                marginRight: 10,
+              }}
+            >
+              <Text style={{ flexDirection: "column", textAlign: "center" }}>
+                Import From Contacts
+              </Text>
+            </View>
+          ),
+          title: "New Connection",
         }}
       />
       <Tabs.Screen

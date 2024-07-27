@@ -30,10 +30,12 @@ const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{contact.name}</Text>
         <Text style={styles.checkInInfo}>
-          Last check-in: <Text style={styles.checkInDate}>{contact.last_connected}</Text>
+          Last check-in:{" "}
+          <Text style={styles.checkInDate}>{contact.last_connected}</Text>
         </Text>
         <Text style={styles.checkInInfo}>
-          Next check-in: <Text style={styles.checkInDate}>{contact.next_connection}</Text>
+          Next check-in:{" "}
+          <Text style={styles.checkInDate}>{contact.next_connection}</Text>
         </Text>
       </View>
       <TouchableOpacity style={styles.checkInButton}>
@@ -46,10 +48,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 20,
     backgroundColor: "#2c2c2e",
     borderRadius: 8,
-    marginBottom: 10,
+    marginBottom: 30,
   },
   initialsContainer: {
     width: 50,
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#3a3a3c",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 20,
+    marginRight: 10,
   },
   initials: {
     color: "white",
@@ -82,13 +83,14 @@ const styles = StyleSheet.create({
   checkInDate: {
     color: "#8e8e93",
     fontSize: 14,
-    fontStyle: 'italic',
+    fontStyle: "italic",
   },
   checkInButton: {
     backgroundColor: "#007AFF",
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
+    marginRight: 20,
   },
   checkInButtonText: {
     color: "white",

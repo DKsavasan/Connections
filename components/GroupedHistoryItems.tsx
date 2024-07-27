@@ -61,6 +61,7 @@ const GroupedHistoryItems: React.FC<GroupedHistoryItemsProps> = ({
   return (
     <SectionList
       sections={groupedData}
+      showsVerticalScrollIndicator={false}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => <HistoryItem contact={item} />}
       renderSectionHeader={({ section: { title } }) => (
